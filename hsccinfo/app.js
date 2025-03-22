@@ -4,15 +4,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// include .env file
+// Including .env file
 require('dotenv').config();
+
 // Creating routers which are linked to files in routes folder
 // MUST ADD ROUTER CONNECTIONS AS WE ADD ROUTE FILES HERE
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bdpahistoryRouter = require('./routes/bdpahistory');
 var formentryRouter = require('./routes/formentry');
-
+var electionMetaRouter = require('./routes/electionmeta');
 // Setting up Express app
 var app = express();
 
@@ -34,6 +35,7 @@ app.use('/', indexRouter);  //Note that index router connects with /.
 app.use('/users', usersRouter);
 app.use('/bdpahistory', bdpahistoryRouter);
 app.use('/formentry', formentryRouter);
+app.use('/electionmeta', electionMetaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
